@@ -1,34 +1,17 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
+from resources import ServerLister, ServerManager
+import server_service
+
 
 app = Flask(__name__)
-# app.secret_key = 'You would never guess it!'
 api = Api(app)
 
-
-# just to test if it's alive
-class HelloWorld(Resource):
-    def get(self):
-        return 'Hello, I\'m alive and working!'
-
-
-# returns a list of all servers
-class ServerLister(Resource):
-
-    def get(self):
-        return 'hello, Im going to display all servers here'
-
-
-# returns details of a single server and manages it's status
-class ServerManager(Resource):
-
-    def get(self, server_id):
-        return 'hello, Im going to display details of one server'
-
+# initialize n number of servers
+server_service.initialize(10)
 
 api.add_resource(ServerManager, '/server/<int:server_id>')
-api.add_resource(ServerLister, '/servers')
-api.add_resource(HelloWorld, '/')
+api.add_resource(ServerLister, '/servers', '/')
 
 if __name__ == "__main__":
     app.run(
