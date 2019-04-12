@@ -5,33 +5,15 @@ servers = {}
 
 
 # creates the given number of servers to work with
+# parameter: server_count(int) number of servers to create
 def initialize(server_count):
 
     for i in range(server_count):
         servers[i] = ServerModel(i, "server" + str(i+1))
 
 
-# checks if a given server ID is valid. Returns True if so, False otherwise
-def check_if_server_id_valid(server_id):
-
-    try:
-        server_id = int(server_id)
-    except TypeError:
-        return False
-
-    if server_id < 0:
-        return False
-
-    return True
-
-
-# checks if a given server ID is in the dict. Returns True if so, False otherwise
-def check_if_server_exists(server_id):
-
-    return int(server_id) in servers
-
-
 # returns a server based on ID, returns None if ID is not found
+# parameter: server_id(int) ID of the server
 def get_server_details(server_id):
 
     if server_id in servers:
@@ -41,7 +23,7 @@ def get_server_details(server_id):
 
 
 # checks out or releases a server
-# parameter: Server object
+# parameter: Server(object)
 # returns the Server object if successful, None otherwise
 def checkout_or_release(server):
     if server.status == ServerStatus.AVAILABLE:

@@ -11,9 +11,7 @@ class ServerStatus(Enum):
 
 # sets server status with a 30% chance of a server being down
 def setServerStatus():
-    number = random.randint(0, 10)
-    print(number)
-    if (number <= 7):
+    if (random.randint(0, 10)):
         return ServerStatus.AVAILABLE
     else:
         return ServerStatus.DOWN
