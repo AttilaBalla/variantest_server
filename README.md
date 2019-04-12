@@ -4,7 +4,7 @@ A demonstration API made with Flask RESTful that simulates the management of ser
 hosted on any platform, it can be launched in a local environment to serve as the backend of the client.
 Requires Flask and Flask RESTful in order to work (see requirements.txt).
 
-The client repository can be found here: https://github.com/AttilaBalla/variantest_server
+The client repository can be found here: https://github.com/AttilaBalla/variantest_client
 
 The API currently has support for the following endpoints:
 * /, /servers - GET returns a list of objects that contain details of all servers. These are ID, name, status.
